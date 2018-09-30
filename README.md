@@ -17,10 +17,13 @@ The file requires the following to run:
 To use this, clone the repo.
 
 ## Structure
+
+```
 .
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
+```
 
 ## Usage
 
