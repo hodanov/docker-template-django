@@ -4,28 +4,32 @@ This is the simple tool. You can build development environment for Django using 
 
 A container of Python-image installed Django and a container of PostgreSQL are created.
 
-# Requirements
+## Requirements
 
 The file requires the following to run:
 
 - docker and docker-compose
 
-# Usage
+## Usage
 
-## git clone this repository
+### git clone this repository
 
 To use this, clone the repo.
 
-## Structure
+### Structure
 
 ```
 .
-├── Dockerfile
+├── db/
+│   └── docker-entrypoint-initdb.d/
+├── db.dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
+├── web/
+└── web.dockerfile
 ```
 
-## Usage
+### Usage
 
 Executing the following command in the repository, two container will be built.
 
@@ -43,16 +47,20 @@ you can see the files like below:
 
 ```
 .
-├── Dockerfile
+├── db/
+│   └── docker-entrypoint-initdb.d/
+├── db.dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
-└── test # <- PROJECT_NAME
-    ├── manage.py
-    └── test
-        ├── __init__.py
-        ├── settings.py
-        ├── urls.py
-        └── wsgi.py
+├── web/
+│   └── project_name/
+│       ├── manage.py*
+│       └── project_name/
+│           ├── __init__.py
+│           ├── settings.py
+│           ├── urls.py
+│           └── wsgi.py
+└── web.dockerfile
 ```
 
 Then, change `DATABASES` in __settings.py__.
@@ -63,6 +71,7 @@ DATABASES = {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'postgres',
     'USER': 'postgres',
+    'PASSWORD': 'postgres',
     'HOST': 'db',
     'PORT': 5432,
   }
@@ -83,5 +92,5 @@ docker container exec -it {CONTAINER_NAME} python {PROJECT_NAME}/manage.py runse
 
 Thank you.
 
-# Author
-[Hodaka Sakamoto](https://hodalog.com/)
+## Author
+[Hoda](https://hodalog.com/)
