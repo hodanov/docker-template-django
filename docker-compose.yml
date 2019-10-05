@@ -15,7 +15,7 @@ services:
       context: .
       dockerfile: ./web.dockerfile
     volumes:
-      - .:/code
+      - ./web:/code
     tty: true
     ports:
       - 8000:8000
