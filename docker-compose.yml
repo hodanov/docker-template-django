@@ -2,9 +2,18 @@ version: "3"
 
 services:
   db:
-    image: postgres:12
+    container_name: db
+    build:
+      context: .
+      dockerfile: ./db.dockerfile
+    volumes:
+      - ./db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+
   web:
-    build: .
+    container_name: web
+    build:
+      context: .
+      dockerfile: ./web.dockerfile
     volumes:
       - .:/code
     tty: true
